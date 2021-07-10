@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  pypi:
+    image: docker.io/pypiserver/pypiserver:latest
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8010:8080"
+    volumes:
+      - ./authfile:/data/.htpasswd
+      - ./packages:/data/packages
+    command: -a update,download,list -P /data/.htpasswd /data/packages
+    restart: always
