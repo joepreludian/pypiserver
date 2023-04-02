@@ -10,5 +10,5 @@ services:
     volumes:
       - ./authfile:/data/.htpasswd
       - ./packages:/data/packages
-    command: -a update,download,list -P /data/.htpasswd /data/packages
+    command: run -a update,download,list -P /data/.htpasswd /data/packages
     restart: always
